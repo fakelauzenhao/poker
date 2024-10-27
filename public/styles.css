@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #1d1f21;
+    color: #fff;
+}
+
+.login-container, .lobby-container {
+    background: #2a2d30;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+.login-container h1, .lobby-container h2 {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.game-rooms, .leaderboard, .wallet {
+    margin-top: 1.5rem;
+}
+
+.room, .vip-room {
+    padding: 1rem;
+    margin: 0.5rem;
+    background: #35373b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.vip-room {
+    background: #FF6347;
+}
+
+.room:hover, .vip-room:hover {
+    background: #3e4145;
+}
