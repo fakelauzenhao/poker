@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texas Poker Lobby</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="lobby-container">
+        <h2>Welcome to Texas Poker Lobby</h2>
+        <div class="wallet">
+            <p>Wallet: $<span id="walletAmount">10000</span></p>
+            <button id="withdrawButton" onclick="withdraw()">Withdraw $10</button>
+            <p>Next withdrawal in: <span id="timer">10:00</span></p>
+        </div>
+        <div class="game-rooms">
+            <h3>Game Rooms</h3>
+            <div class="room" onclick="joinRoom(1)">Room 1</div>
+            <div class="room" onclick="joinRoom(2)">Room 2</div>
+            <div class="room" onclick="joinRoom(3)">Room 3</div>
+            <div class="room" onclick="joinRoom(4)">Room 4</div>
+            <div class="room vip-room" onclick="joinVipRoom()">VIP Room</div>
+        </div>
+        <div class="leaderboard">
+            <h3>Leaderboard</h3>
+            <ul id="leaderboardList">
+                <li>Player1 - $20000</li>
+                <li>Player2 - $18000</li>
+                <li>Player3 - $15000</li>
+            </ul>
+        </div>
+    </div>
+    <script src="/public/lobby.js"></script>
+</body>
+</html>

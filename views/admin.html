@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Admin Dashboard</h1>
+        <p>Welcome, Blaze Eternum!</p>
+        <h2>User Management</h2>
+        <div id="userList"></div>
+    </div>
+
+    <script>
+        // Fetch users and display them
+        async function fetchUsers() {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+            const userList = document.getElementById('userList');
+            userList.innerHTML = '';
+
+            users.forEach(user => {
+                const userDiv = document.createElement('div');
+                userDiv.innerHTML = `
+                    <p><strong>${user.username}</strong> - Wallet: $<span id="wallet-${user._id}">${user.wallet}</span> - Admin: ${user.isAdmin} - VIP: ${user.isVIP}</p>
+                    <button onclick="deleteUser('${user._id}')">Delete</button>
+                    <button onclick="promoteToAdmin('${user._id}')">Promote to Admin</button>
+                    <button onclick="addToVIP('${user._id}')">Add to VIP</button>
+                    <button onclick="addMoney('${user._id}')">+ $100</button>
+                    <hr>
+                `;
+                userList.appendChild(userDiv);
+            });
+        }
+
+        // Delete user
+        async function deleteUser(userId) {
+            await fetch(`/api/users/${userId}`, { method: 'DELETE' });
+            fetchUsers();
+        }
+
+        // Promote user to admin
+        async function promoteToAdmin(userId) {
+            await fetch(`/api/users/${userId}/promote`, { method: 'POST' });
+            fetchUsers();
+        }
+
+        // Add user to VIP room
+        async function addToVIP(userId) {
+            await fetch(`/api/users/${userId}/vip`, { method: 'POST' });
+            fetchUsers();
+        }
+
+        // Add $100 to user's wallet
+        async function addMoney(userId) {
+            const response = await fetch(`/api/users/${userId}/add-money`, { method: 'POST' });
+            const data = await response.json();
+            
+            // Update wallet amount displayed on page
+            const walletElement = document.getElementById(`wallet-${userId}`);
+            walletElement.textContent = data.wallet;
+        }
+
+        // Load users on page load
+        fetchUsers();
+    </script>
+</body>
+</html>

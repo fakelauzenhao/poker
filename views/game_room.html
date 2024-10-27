@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Room</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="game-room-container">
+        <h2>Game Room</h2>
+        <div class="game-table">
+            <p>Table with cards here (graphical cards)</p>
+        </div>
+        <div class="chat">
+            <h3>Room Chat</h3>
+            <div id="chatDisplay"></div>
+            <input type="text" id="chatInput" placeholder="Type your message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <button onclick="leaveRoom()">Leave Room</button>
+    </div>
+    <script src="/public/game_room.js"></script>
+</body>
+</html>
